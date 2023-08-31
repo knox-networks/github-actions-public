@@ -16,7 +16,7 @@ runs:
     - name: Install protofetch
       shell: bash
       run: |-
-        cargo install --git https://github.com/coralogix/protofetch  --rev 35801f91f6b57806cf7005c86b7d2d804f02eddf
+        cargo install protofetch
 
     - name: Setup git credential helper
       shell: bash
