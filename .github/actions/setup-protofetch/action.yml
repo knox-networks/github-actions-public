@@ -21,5 +21,6 @@ runs:
     - name: Setup git credential helper
       shell: bash
       run: |-
-        git config credential.helper '!f() { echo username=${{ inputs.cross-repo-username }}; echo password=${{ inputs.cross-repo-token }}; };f'
+        git config --global credential.helper '!f() { echo username=${{ inputs.cross-repo-username }}; echo password=${{ inputs.cross-repo-token }}; };f'
+
 
