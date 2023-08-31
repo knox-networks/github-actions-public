@@ -14,10 +14,12 @@ runs:
   using: composite
   steps:
     - name: Install protofetch
+      shell: bash
       run: |-
         cargo install --git https://github.com/coralogix/protofetch  --rev 35801f91f6b57806cf7005c86b7d2d804f02eddf
 
     - name: Setup git credential helper
+      shell: bash
       run: |-
         git config credential.helper '!f() { echo username=${{ inputs.cross-repo-username }}; echo password=${{ inputs.cross-repo-token }}; };f'
 
