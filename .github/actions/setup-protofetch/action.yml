@@ -1,0 +1,23 @@
+name: Setup Protofetch
+description: |
+  Installs protofetch, configures git credentials for a Github user with cross-repo read privileges
+
+inputs:
+  cross-repo-username:
+    description: Username of a Github user with cross-repository read privileges
+    required: true
+  cross-repo-token:
+    description: Access token of a Github user with cross-repository read privileges
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: Install protofetch
+      run: |-
+        cargo install --git https://github.com/coralogix/protofetch  --rev 35801f91f6b57806cf7005c86b7d2d804f02eddf
+
+    - name: Setup git credential helper
+      run: |-
+        git config credential.helper '!f() { echo username=${{ inputs.cross-repo-username }}; echo password=${{ inputs.cross-repo-token }}; };f'
+
