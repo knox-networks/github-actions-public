@@ -16,7 +16,7 @@ runs:
     - name: Install protofetch
       shell: bash
       run: |-
-        cargo install protofetch
+        cargo install --git https://github.com/knox-networks/protofetch --branch no-remote-fetch
 
     - name: Setup git credential helper
       shell: bash
