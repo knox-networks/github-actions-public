@@ -16,7 +16,10 @@ runs:
     - name: Install protofetch
       shell: bash
       run: |-
-        cargo install --git https://github.com/knox-networks/protofetch --branch no-remote-fetch
+        TAR_FILE="protofetch_x86_64-unknown-linux-musl.tar.gz"
+        wget --quiet "https://github.com/knox-networks/protofetch/releases/download/knox-release-2/protofetch_x86_64-unknown-linux-musl.tar.gz"
+        tar -xzvf $TAR_FILE --strip-components 1
+        sudo mv protofetch /usr/local/bin
 
     - name: Setup git credential helper
       shell: bash
